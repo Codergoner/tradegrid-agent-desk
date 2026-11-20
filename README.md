@@ -4,8 +4,9 @@ An open agentic website for the [Open Agentic Web Challenge](https://cognizant-a
 It helps a Malaysian SME exporter see which export requirements apply to one shipment,
 which do not, and what is still missing.
 
-Status: first working build, running locally. Not yet deployed, and not yet tested with a
-live AI model.
+Live site: https://codergoner.github.io/tradegrid-agent-desk/
+
+Status: first working build, deployed on GitHub Pages. Not yet tested with a live AI model.
 
 ## How it works
 
