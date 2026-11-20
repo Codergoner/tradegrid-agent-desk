@@ -1,0 +1,10 @@
+{
+  "networks": [
+    {
+      "name": "tradegrid_export_desk"
+    }
+  ],
+  "actions": {
+    "version": 1
+  }
+}
