@@ -1,0 +1,79 @@
+{
+  "brand": "TradeGrid Agent Desk Assistant",
+  "networks": [
+    {
+      "name": "tradegrid_export_desk",
+      "front_man": "export_desk_coordinator",
+      "hocon": "./tradegrid_export_desk.network.json",
+      "description": "Ask which Malaysian export requirements apply to your shipment, what is still missing, and have the form filled in for you.",
+      "tags": [
+        "agentified-website"
+      ],
+      "sample_queries": [
+        "I'm shipping 1,200 jars of chilli paste from Port Klang to Singapore by sea, FOB. What do I need?",
+        "Why can't the Strategic Trade Act requirement be decided yet?",
+        "Change the shipment to air freight and tell me what changes.",
+        "File my K2 declaration with Customs for me."
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1"
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "Local agents and page-local actions only."
+  },
+  "agent_mcp": {
+    "protocol": "nsdeploy-agent-mcp/v1",
+    "network": "tradegrid_export_desk",
+    "front_man": "export_desk_coordinator",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#0f766e"
+  },
+  "linking": {
+    "protocol": "nsdeploy-link/v1",
+    "exports": [
+      {
+        "network": "tradegrid_export_desk",
+        "front_man": "export_desk_coordinator",
+        "aliases": [
+          "tradegrid_export_desk",
+          "export_desk_coordinator"
+        ],
+        "url": "tradegrid_export_desk"
+      }
+    ],
+    "imports": [],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./site-actions.js",
+    "bridge": "./bridge/action-bridge.html",
+    "agentTools": [
+      "get_export_desk_state",
+      "update_route",
+      "update_parties",
+      "set_product_line",
+      "start_new_shipment"
+    ]
+  }
+}

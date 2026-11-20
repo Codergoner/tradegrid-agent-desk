@@ -1,0 +1,1 @@
+Serve every folder as is, including .well-known and _build (no Jekyll processing).

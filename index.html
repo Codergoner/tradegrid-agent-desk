@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TradeGrid Agent Desk</title>
+    <meta name="description" content="See which Malaysian export requirements apply to a shipment, with an agent network that reads the page's rules engine and fills in the form.">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="script.js"></script>
+    <script type="module" src="site.js"></script>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="wrap">
+        <p class="brand">TradeGrid <span>Agent Desk</span></p>
+        <h1>Which export requirements apply to this shipment?</h1>
+        <p class="lead">Describe one shipment leaving Malaysia. The checklist shows which requirements apply, which do not, and what is still missing. Ask the assistant, or fill in the form yourself: both use the same rules.</p>
+        <p class="notice">This page helps you prepare. It does not file customs declarations, classify goods or give legal advice. Confirm every requirement with the responsible authority or your agent.</p>
+      </div>
+    </header>
+
+    <main class="wrap layout">
+      <section id="assistant" class="assistant" aria-labelledby="assistant-heading">
+        <h2 id="assistant-heading">Ask the export desk</h2>
+        <p>The assistant reads this page's checklist and can fill in the form for you. Try: “I'm shipping chilli paste to Singapore by sea. What do I need?”</p>
+        <p class="assistant-note">Your messages and this page's shipment data go to the AI provider you choose in the settings below, using your own key. You confirm anything that cannot be undone before it happens.</p>
+        <p id="assistant-status" role="status">Connecting the assistant… If this message stays, the assistant could not load. You can still use the form directly.</p>
+        <div id="agent-app">
+          <div data-ns-slot="header"></div>
+          <details class="assistant-settings">
+            <summary>AI model settings</summary>
+            <div data-ns-slot="settings"></div>
+          </details>
+          <div data-ns-slot="chat"></div>
+          <div data-ns-slot="agents"></div>
+        </div>
+      </section>
+
+      <div class="workspace">
+        <section class="panel" aria-labelledby="shipment-heading">
+          <div class="panel-head">
+            <h2 id="shipment-heading">Shipment</h2>
+            <div class="panel-actions">
+              <button type="button" id="load-example" class="button-plain">Load the example</button>
+              <button type="button" id="start-new" class="button-plain">Clear the shipment</button>
+            </div>
+          </div>
+          <p id="form-status" class="status" role="status">Changes are saved in this browser as you make them.</p>
+
+          <h3>Route and terms</h3>
+          <div id="route-fields" class="fields"></div>
+
+          <h3>Screening questions</h3>
+          <p class="help">Your own answers. “Not answered” never counts as a pass.</p>
+          <div id="screening-fields" class="fields fields-wide"></div>
+
+          <h3>Exporter and buyer</h3>
+          <div id="party-fields" class="fields"></div>
+
+          <h3>Products</h3>
+          <div id="product-lines"></div>
+          <button type="button" id="add-line">Add a product line</button>
+
+          <h3>Totals</h3>
+          <dl id="totals" class="totals"></dl>
+        </section>
+
+        <section class="panel" aria-labelledby="checklist-heading">
+          <h2 id="checklist-heading">Requirements checklist</h2>
+          <p id="checklist-summary" class="summary"></p>
+          <p id="ruleset" class="help"></p>
+          <ul id="checklist" class="checklist"></ul>
+        </section>
+      </div>
+    </main>
+
+    <footer class="wrap footer">
+      <p>TradeGrid Agent Desk is an open agentic website built for the Open Agentic Web Challenge. The agent network is published at <a href="agent-manifest.json">agent-manifest.json</a>. Rules come from TradeGrid's export ruleset and cite public guidance from Royal Malaysian Customs, MITI, MAQIS, MATRADE, Singapore Customs and the ICC.</p>
+    </footer>
+  </body>
+</html>
