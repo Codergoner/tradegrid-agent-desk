@@ -1,0 +1,18 @@
+{
+  "protocol": "nsdeploy-link/v1",
+  "exports": [
+    {
+      "network": "tradegrid_export_desk",
+      "front_man": "export_desk_coordinator",
+      "aliases": [
+        "tradegrid_export_desk",
+        "export_desk_coordinator"
+      ],
+      "url": "tradegrid_export_desk"
+    }
+  ],
+  "imports": [],
+  "link_updates": {
+    "mode": "browser-local"
+  }
+}
